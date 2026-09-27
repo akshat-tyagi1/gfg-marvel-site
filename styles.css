@@ -259,11 +259,21 @@ a {
 .hero {
   position: relative;
   min-height: 100vh;
+  display: flex;
+  align-items: center; /* vertically center the container within the full-height section */
+  padding: calc(var(--section-pad-y) + 24px) var(--section-pad-x) var(--section-pad-y);
+  overflow: hidden;
+}
+
+/* --- Hero container — mirrors every other section's max-width centering --- */
+.hero__container {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  padding: calc(var(--section-pad-y) + 24px) var(--section-pad-x) var(--section-pad-y);
-  overflow: hidden;
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* --- Grain / noise overlay (CSS-generated) --- */
@@ -468,7 +478,7 @@ a {
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 100%;
 }
 
@@ -504,7 +514,7 @@ a {
 
 /* --- Tablet (640–1024px) --- */
 @media (max-width: 1024px) {
-  .hero {
+  .hero__container {
     grid-template-columns: 1fr 1.5fr;
     gap: 40px;
   }
@@ -521,12 +531,16 @@ a {
 /* --- Mobile (< 640px) --- */
 @media (max-width: 639px) {
   .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    text-align: center;
     min-height: 100svh;
     padding-top: 48px;
     padding-bottom: var(--section-pad-y);
+    align-items: flex-start; /* let container grow naturally on mobile */
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    text-align: center;
     gap: 32px;
   }
 
