@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A100D">
   <title>Protocol: Doom — Edition I | GFG Student Chapter, Bennett University</title>
   <meta name="description" content="Protocol: Doom — A 24-hour hackathon by GeeksforGeeks Student Chapter, Bennett University. October 24–25, 2026. Four trials. One decree. Will you answer?">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A100D'/%3E%3Cpath d='M50 18 C32 18 20 30 18 50 L15 70 C15 78 25 88 50 92 C75 88 85 78 85 70 L82 50 C80 30 68 18 50 18Z' fill='none' stroke='%23B08D57' stroke-width='6'/%3E%3Ccircle cx='38' cy='52' r='4' fill='%232C6E52'/%3E%3Ccircle cx='62' cy='52' r='4' fill='%232C6E52'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <!-- Preconnect for Google Fonts performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +55,8 @@
           <span class="countdown__label">Seconds</span>
         </div>
       </div>
+
+      <a href="#trials" class="hero__trials-link label-mono">VIEW THE TRIALS &rarr;</a>
 
       <p class="hero__credit">GeeksforGeeks Student Chapter · Bennett University</p>
 
@@ -244,42 +248,64 @@
         <p class="trials__intro">Four arenas of technical mastery. Choose your proving ground under the Protocol.</p>
       </div>
 
-      <div class="trials__accordion" id="trials-accordion" role="tablist" aria-label="Trials of Doom Tracks">
+      <div class="trials__accordion" id="trials-accordion" aria-label="Trials of Doom Tracks">
 
         <!-- Trial 1: The Sentience Trial (Expanded by default) -->
-        <article class="trial-panel is-expanded" id="trial-sentience" data-trial="sentience" role="tab" tabindex="0" aria-selected="true" aria-expanded="true">
-          <!-- Collapsed State (Desktop/Tablet: rotated strip; Mobile: collapsed bar) -->
-          <div class="trial-panel__collapsed" aria-hidden="true">
+        <article class="trial-panel is-expanded" id="trial-sentience" data-trial="sentience">
+          <!-- Collapsed Header Button -->
+          <button class="trial-panel__collapsed" id="trial-sentience-header" aria-expanded="true" aria-controls="trial-sentience-content" type="button">
             <div class="trial-panel__collapsed-sigil">
-              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                  <path d="M111 119 L150 107 L189 119"/>
-                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
-                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
-                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+              <!-- Sentience Trial icon: neural node lattice -->
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Neural lattice — Sentience Trial">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="150" y1="85" x2="95" y2="140" stroke-width="10"/>
+                  <line x1="150" y1="85" x2="205" y2="140" stroke-width="10"/>
+                  <line x1="150" y1="85" x2="150" y2="155" stroke-width="10"/>
+                  <line x1="95" y1="140" x2="150" y2="155" stroke-width="10"/>
+                  <line x1="205" y1="140" x2="150" y2="155" stroke-width="10"/>
+                  <line x1="95" y1="140" x2="100" y2="215" stroke-width="9"/>
+                  <line x1="150" y1="155" x2="100" y2="215" stroke-width="9"/>
+                  <line x1="150" y1="155" x2="200" y2="215" stroke-width="9"/>
+                  <line x1="205" y1="140" x2="200" y2="215" stroke-width="9"/>
+                  <circle cx="150" cy="85" r="14" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                  <circle cx="95" cy="140" r="11" fill="#0A1510" stroke="#2C6E52" stroke-width="9"/>
+                  <circle cx="205" cy="140" r="11" fill="#0A1510" stroke="#2C6E52" stroke-width="9"/>
+                  <circle cx="150" cy="155" r="13" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                  <circle cx="100" cy="215" r="10" fill="#0A1510" stroke="currentColor" stroke-width="8"/>
+                  <circle cx="200" cy="215" r="10" fill="#0A1510" stroke="currentColor" stroke-width="8"/>
                 </g>
               </svg>
             </div>
             <span class="trial-panel__collapsed-label label-mono">TRIAL 01</span>
             <span class="trial-panel__collapsed-title">The Sentience Trial</span>
-          </div>
+          </button>
 
           <!-- Expanded Content -->
-          <div class="trial-panel__expanded">
+          <div class="trial-panel__expanded" id="trial-sentience-content">
             <div class="trial-panel__meta">
               <div class="trial-panel__sigil-badge">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                    <path d="M111 119 L150 107 L189 119"/>
-                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                <!-- Sentience Trial badge: neural node lattice -->
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Neural lattice — Sentience Trial">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="150" y1="85" x2="95" y2="140" stroke-width="10"/>
+                    <line x1="150" y1="85" x2="205" y2="140" stroke-width="10"/>
+                    <line x1="150" y1="85" x2="150" y2="155" stroke-width="10"/>
+                    <line x1="95" y1="140" x2="150" y2="155" stroke-width="10"/>
+                    <line x1="205" y1="140" x2="150" y2="155" stroke-width="10"/>
+                    <line x1="95" y1="140" x2="100" y2="215" stroke-width="9"/>
+                    <line x1="150" y1="155" x2="100" y2="215" stroke-width="9"/>
+                    <line x1="150" y1="155" x2="200" y2="215" stroke-width="9"/>
+                    <line x1="205" y1="140" x2="200" y2="215" stroke-width="9"/>
+                    <circle cx="150" cy="85" r="14" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                    <circle cx="95" cy="140" r="11" fill="#0A1510" stroke="#2C6E52" stroke-width="9"/>
+                    <circle cx="205" cy="140" r="11" fill="#0A1510" stroke="#2C6E52" stroke-width="9"/>
+                    <circle cx="150" cy="155" r="13" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                    <circle cx="100" cy="215" r="10" fill="#0A1510" stroke="currentColor" stroke-width="8"/>
+                    <circle cx="200" cy="215" r="10" fill="#0A1510" stroke="currentColor" stroke-width="8"/>
                   </g>
                 </svg>
               </div>
@@ -295,43 +321,55 @@
             <div class="trial-panel__divider"></div>
 
             <div class="trial-panel__action">
-              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+              <span class="trial-panel__enter label-mono">VIEW CHALLENGE</span>
             </div>
           </div>
         </article>
 
         <!-- Trial 2: The Construct Trial -->
-        <article class="trial-panel" id="trial-construct" data-trial="construct" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
-          <div class="trial-panel__collapsed" aria-hidden="true">
+        <article class="trial-panel" id="trial-construct" data-trial="construct">
+          <button class="trial-panel__collapsed" id="trial-construct-header" aria-expanded="false" aria-controls="trial-construct-content" type="button">
             <div class="trial-panel__collapsed-sigil">
-              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                  <path d="M111 119 L150 107 L189 119"/>
-                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
-                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
-                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+              <!-- Construct Trial icon: bracket/window frame -->
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Bracket frame — Construct Trial">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="75" y="90" width="150" height="120" rx="8" stroke-width="11"/>
+                  <line x1="75" y1="122" x2="225" y2="122" stroke-width="9"/>
+                  <circle cx="96" cy="106" r="5.5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                  <circle cx="114" cy="106" r="5.5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                  <circle cx="132" cy="106" r="5.5" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                  <line x1="95" y1="148" x2="155" y2="148" stroke-width="9"/>
+                  <line x1="95" y1="170" x2="205" y2="170" stroke-width="9"/>
+                  <line x1="110" y1="192" x2="175" y2="192" stroke-width="9"/>
+                  <polyline points="58,132 40,150 58,168" stroke-width="11" stroke="#2C6E52"/>
+                  <polyline points="242,132 260,150 242,168" stroke-width="11" stroke="#2C6E52"/>
                 </g>
               </svg>
             </div>
             <span class="trial-panel__collapsed-label label-mono">TRIAL 02</span>
             <span class="trial-panel__collapsed-title">The Construct Trial</span>
-          </div>
+          </button>
 
-          <div class="trial-panel__expanded">
+          <div class="trial-panel__expanded" id="trial-construct-content">
             <div class="trial-panel__meta">
               <div class="trial-panel__sigil-badge">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                    <path d="M111 119 L150 107 L189 119"/>
-                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                <!-- Construct Trial badge: bracket/window frame -->
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Bracket frame — Construct Trial">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="75" y="90" width="150" height="120" rx="8" stroke-width="11"/>
+                    <line x1="75" y1="122" x2="225" y2="122" stroke-width="9"/>
+                    <circle cx="96" cy="106" r="5.5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                    <circle cx="114" cy="106" r="5.5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                    <circle cx="132" cy="106" r="5.5" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                    <line x1="95" y1="148" x2="155" y2="148" stroke-width="9"/>
+                    <line x1="95" y1="170" x2="205" y2="170" stroke-width="9"/>
+                    <line x1="110" y1="192" x2="175" y2="192" stroke-width="9"/>
+                    <polyline points="58,132 40,150 58,168" stroke-width="11" stroke="#2C6E52"/>
+                    <polyline points="242,132 260,150 242,168" stroke-width="11" stroke="#2C6E52"/>
                   </g>
                 </svg>
               </div>
@@ -347,43 +385,47 @@
             <div class="trial-panel__divider"></div>
 
             <div class="trial-panel__action">
-              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+              <span class="trial-panel__enter label-mono">VIEW CHALLENGE</span>
             </div>
           </div>
         </article>
 
         <!-- Trial 3: The Fortress Trial -->
-        <article class="trial-panel" id="trial-fortress" data-trial="fortress" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
-          <div class="trial-panel__collapsed" aria-hidden="true">
+        <article class="trial-panel" id="trial-fortress" data-trial="fortress">
+          <button class="trial-panel__collapsed" id="trial-fortress-header" aria-expanded="false" aria-controls="trial-fortress-content" type="button">
             <div class="trial-panel__collapsed-sigil">
-              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                  <path d="M111 119 L150 107 L189 119"/>
-                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
-                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
-                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+              <!-- Fortress Trial icon: shield with padlock -->
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Shield padlock — Fortress Trial">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M150 72 L78 104 V165 C78 210, 115 240, 150 252 C185 240, 222 210, 222 165 V104 Z" stroke-width="12"/>
+                  <path d="M150 94 L96 118 V165 C96 198, 122 222, 150 231 C178 222, 204 198, 204 165 V118 Z" stroke-width="4" stroke-dasharray="5 5"/>
+                  <rect x="124" y="152" width="52" height="40" rx="5" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                  <path d="M136 152 V134 C136 120, 164 120, 164 134 V152" stroke="#2C6E52" stroke-width="10"/>
+                  <circle cx="150" cy="167" r="5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                  <line x1="150" y1="171" x2="150" y2="181" stroke="#2C6E52" stroke-width="7"/>
                 </g>
               </svg>
             </div>
             <span class="trial-panel__collapsed-label label-mono">TRIAL 03</span>
             <span class="trial-panel__collapsed-title">The Fortress Trial</span>
-          </div>
+          </button>
 
-          <div class="trial-panel__expanded">
+          <div class="trial-panel__expanded" id="trial-fortress-content">
             <div class="trial-panel__meta">
               <div class="trial-panel__sigil-badge">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                    <path d="M111 119 L150 107 L189 119"/>
-                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                <!-- Fortress Trial badge: shield with padlock -->
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Shield padlock — Fortress Trial">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M150 72 L78 104 V165 C78 210, 115 240, 150 252 C185 240, 222 210, 222 165 V104 Z" stroke-width="12"/>
+                    <path d="M150 94 L96 118 V165 C96 198, 122 222, 150 231 C178 222, 204 198, 204 165 V118 Z" stroke-width="4" stroke-dasharray="5 5"/>
+                    <rect x="124" y="152" width="52" height="40" rx="5" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
+                    <path d="M136 152 V134 C136 120, 164 120, 164 134 V152" stroke="#2C6E52" stroke-width="10"/>
+                    <circle cx="150" cy="167" r="5" fill="#2C6E52" stroke="#2C6E52" stroke-width="2"/>
+                    <line x1="150" y1="171" x2="150" y2="181" stroke="#2C6E52" stroke-width="7"/>
                   </g>
                 </svg>
               </div>
@@ -399,43 +441,53 @@
             <div class="trial-panel__divider"></div>
 
             <div class="trial-panel__action">
-              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+              <span class="trial-panel__enter label-mono">VIEW CHALLENGE</span>
             </div>
           </div>
         </article>
 
         <!-- Trial 4: The Wildcard Trial -->
-        <article class="trial-panel" id="trial-wildcard" data-trial="wildcard" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
-          <div class="trial-panel__collapsed" aria-hidden="true">
+        <article class="trial-panel" id="trial-wildcard" data-trial="wildcard">
+          <button class="trial-panel__collapsed" id="trial-wildcard-header" aria-expanded="false" aria-controls="trial-wildcard-content" type="button">
             <div class="trial-panel__collapsed-sigil">
-              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                  <path d="M111 119 L150 107 L189 119"/>
-                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
-                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
-                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+              <!-- Wildcard Trial icon: asymmetric fractured polygon -->
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Fractured polygon — Wildcard Trial">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="140,75 220,100 235,175 175,235 90,225 75,145" stroke-width="11"/>
+                  <line x1="140" y1="75" x2="160" y2="158" stroke-width="9"/>
+                  <line x1="220" y1="100" x2="160" y2="158" stroke-width="9"/>
+                  <line x1="235" y1="175" x2="160" y2="158" stroke-width="9"/>
+                  <line x1="175" y1="235" x2="160" y2="158" stroke-width="9"/>
+                  <line x1="90" y1="225" x2="160" y2="158" stroke-width="9"/>
+                  <line x1="75" y1="145" x2="160" y2="158" stroke-width="9"/>
+                  <circle cx="160" cy="158" r="7" fill="#2C6E52" stroke="#2C6E52" stroke-width="3"/>
+                  <polygon points="75,145 95,98 140,75 112,122" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
                 </g>
               </svg>
             </div>
             <span class="trial-panel__collapsed-label label-mono">TRIAL 04</span>
             <span class="trial-panel__collapsed-title">The Wildcard Trial</span>
-          </div>
+          </button>
 
-          <div class="trial-panel__expanded">
+          <div class="trial-panel__expanded" id="trial-wildcard-content">
             <div class="trial-panel__meta">
               <div class="trial-panel__sigil-badge">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
-                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
-                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
-                    <path d="M111 119 L150 107 L189 119"/>
-                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                <!-- Wildcard Trial badge: asymmetric fractured polygon -->
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="Fractured polygon — Wildcard Trial">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="7"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="6 8"/>
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="140,75 220,100 235,175 175,235 90,225 75,145" stroke-width="11"/>
+                    <line x1="140" y1="75" x2="160" y2="158" stroke-width="9"/>
+                    <line x1="220" y1="100" x2="160" y2="158" stroke-width="9"/>
+                    <line x1="235" y1="175" x2="160" y2="158" stroke-width="9"/>
+                    <line x1="175" y1="235" x2="160" y2="158" stroke-width="9"/>
+                    <line x1="90" y1="225" x2="160" y2="158" stroke-width="9"/>
+                    <line x1="75" y1="145" x2="160" y2="158" stroke-width="9"/>
+                    <circle cx="160" cy="158" r="7" fill="#2C6E52" stroke="#2C6E52" stroke-width="3"/>
+                    <polygon points="75,145 95,98 140,75 112,122" fill="#0A1510" stroke="#2C6E52" stroke-width="10"/>
                   </g>
                 </svg>
               </div>
@@ -451,7 +503,7 @@
             <div class="trial-panel__divider"></div>
 
             <div class="trial-panel__action">
-              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+              <span class="trial-panel__enter label-mono">VIEW CHALLENGE</span>
             </div>
           </div>
         </article>

@@ -9,6 +9,7 @@
   // --- Countdown Timer (target: October 24, 2026 00:00 IST) ---
   const EVENT_DATE = new Date('2026-10-24T00:00:00+05:30').getTime();
 
+  const $countdown = document.getElementById('countdown');
   const $days  = document.getElementById('countdown-days');
   const $hours = document.getElementById('countdown-hours');
   const $mins  = document.getElementById('countdown-mins');
@@ -21,22 +22,24 @@
     const diff = EVENT_DATE - now;
 
     if (diff <= 0) {
-      $days.textContent  = '00';
-      $hours.textContent = '00';
-      $mins.textContent  = '00';
-      $secs.textContent  = '00';
+      if ($countdown && !$countdown.classList.contains('is-finished')) {
+        $countdown.classList.add('is-finished');
+        $countdown.innerHTML = '<div class="countdown__finished label-mono">THE TRIAL HAS BEGUN</div>';
+      }
       return;
     }
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
+    if ($days && $hours && $mins && $secs) {
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
 
-    $days.textContent  = pad(d);
-    $hours.textContent = pad(h);
-    $mins.textContent  = pad(m);
-    $secs.textContent  = pad(s);
+      $days.textContent  = pad(d);
+      $hours.textContent = pad(h);
+      $mins.textContent  = pad(m);
+      $secs.textContent  = pad(s);
+    }
   }
 
   updateCountdown();
@@ -73,8 +76,9 @@
 
   if (sigil && eyes) {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!isTouchDevice) {
+    if (!isTouchDevice && !prefersReducedMotion) {
       const MAX_ROTATION = 4; // degrees — subtle, as specified
 
       document.addEventListener('mousemove', (e) => {
@@ -128,25 +132,18 @@
       trialPanels.forEach(panel => {
         const isTarget = panel === targetPanel;
         panel.classList.toggle('is-expanded', isTarget);
-        panel.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
-        panel.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        const headerBtn = panel.querySelector('.trial-panel__collapsed');
+        if (headerBtn) {
+          headerBtn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+        }
       });
     }
 
     trialPanels.forEach(panel => {
-      // Click expansion (works for desktop, tablet, and mobile tap)
       panel.addEventListener('click', () => {
         expandTrial(panel);
       });
 
-      // Hover expansion on devices with fine pointer (desktop mouse)
-      panel.addEventListener('pointerenter', (e) => {
-        if (e.pointerType === 'mouse') {
-          expandTrial(panel);
-        }
-      });
-
-      // Keyboard navigation (Enter / Space)
       panel.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -181,6 +178,7 @@
     if (!modalBackdrop) return;
     modalBackdrop.classList.add('is-open');
     modalBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
     if (modalClose) modalClose.focus();
   }
 
@@ -188,6 +186,7 @@
     if (!modalBackdrop) return;
     modalBackdrop.classList.remove('is-open');
     modalBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
     if (sealButton) sealButton.focus();
   }
 
@@ -228,9 +227,37 @@
     });
   }
 
+  // Keydown handler: Escape to close + Tab focus trap
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('is-open')) {
+    if (!modalBackdrop || !modalBackdrop.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusables = Array.from(
+        modalBackdrop.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusables.length === 0) return;
+
+      const firstEl = focusables[0];
+      const lastEl = focusables[focusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl || !modalBackdrop.contains(document.activeElement)) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl || !modalBackdrop.contains(document.activeElement)) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
     }
   });
 
