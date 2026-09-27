@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocol: Doom — Edition I | GFG Student Chapter, Bennett University</title>
+  <meta name="description" content="Protocol: Doom — A 24-hour hackathon by GeeksforGeeks Student Chapter, Bennett University. October 24–25, 2026. Four trials. One decree. Will you answer?">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Preconnect for Google Fonts performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap">
+</head>
+<body>
+
+  <!-- ====================================================================
+       HERO SECTION
+       ==================================================================== -->
+  <section class="hero" id="hero">
+
+    <!-- Left column: headline, metadata, countdown -->
+    <div class="hero__content">
+
+      <span class="hero__edition">Edition I</span>
+
+      <p class="hero__event-name">Protocol: Doom</p>
+
+      <h1 class="hero__headline" id="hero-headline">
+        The Trial Begins
+      </h1>
+
+      <p class="hero__tagline">
+        A 24-hour hackathon under the Protocol.
+        Four Trials. One Decree.
+      </p>
+
+      <!-- Countdown to October 24, 2026 -->
+      <div class="hero__countdown" id="countdown" aria-label="Countdown to event start">
+        <div class="countdown__unit">
+          <span class="countdown__number" id="countdown-days">--</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="countdown-hours">--</span>
+          <span class="countdown__label">Hours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="countdown-mins">--</span>
+          <span class="countdown__label">Minutes</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="countdown-secs">--</span>
+          <span class="countdown__label">Seconds</span>
+        </div>
+      </div>
+
+      <p class="hero__credit">GeeksforGeeks Student Chapter · Bennett University</p>
+
+    </div>
+
+    <!-- Right column: Doom sigil / mask (etched line-art SVG) -->
+    <div class="hero__sigil-wrap">
+      <div class="hero__sigil" id="doom-sigil">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-label="Doctor Doom sigil">
+          <!-- Outer ring -->
+          <circle cx="250" cy="250" r="230" fill="none" stroke="#4A4F4E" stroke-width="1.5"/>
+          <circle cx="250" cy="250" r="220" fill="none" stroke="#2C6E52" stroke-width="0.5" stroke-dasharray="4 8"/>
+
+          <!-- Inner decorative ring -->
+          <circle cx="250" cy="250" r="190" fill="none" stroke="#4A4F4E" stroke-width="0.8"/>
+
+          <!-- Doom mask / helmet outline -->
+          <g id="doom-mask" fill="none" stroke="#EDE6DA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Hood / top of mask -->
+            <path d="M250 80 
+                     C200 80, 140 120, 130 180 
+                     L125 260 
+                     C120 300, 130 340, 150 360
+                     L160 372
+                     C170 380, 185 395, 195 405
+                     L210 415
+                     C225 420, 240 422, 250 422
+                     C260 422, 275 420, 290 415
+                     L305 405
+                     C315 395, 330 380, 340 372
+                     L350 360
+                     C370 340, 380 300, 375 260
+                     L370 180
+                     C360 120, 300 80, 250 80Z"/>
+
+            <!-- Inner face plate -->
+            <path d="M250 130 
+                     C215 130, 175 155, 168 200 
+                     L165 270 
+                     C162 300, 175 335, 195 355
+                     L215 375
+                     C230 380, 245 382, 250 382
+                     C255 382, 270 380, 285 375
+                     L305 355
+                     C325 335, 338 300, 335 270
+                     L332 200
+                     C325 155, 285 130, 250 130Z"/>
+
+            <!-- Brow ridge -->
+            <path d="M185 195 L250 175 L315 195" stroke-width="2.2"/>
+
+            <!-- Nose ridge -->
+            <path d="M250 195 L245 280 L250 310 L255 280 L250 195"/>
+
+            <!-- Mouth grate lines -->
+            <line x1="215" y1="330" x2="215" y2="365" stroke-width="1"/>
+            <line x1="230" y1="325" x2="230" y2="370" stroke-width="1"/>
+            <line x1="245" y1="323" x2="245" y2="375" stroke-width="1"/>
+            <line x1="255" y1="323" x2="255" y2="375" stroke-width="1"/>
+            <line x1="270" y1="325" x2="270" y2="370" stroke-width="1"/>
+            <line x1="285" y1="330" x2="285" y2="365" stroke-width="1"/>
+
+            <!-- Chin -->
+            <path d="M200 355 Q250 400, 300 355" stroke-width="1"/>
+          </g>
+
+          <!-- Eye slits — these get the glow pulse -->
+          <g id="sigil-eyes">
+            <path class="sigil-eye" d="M190 210 L215 205 L230 215 L215 225 L190 220Z"/>
+            <path class="sigil-eye" d="M310 210 L285 205 L270 215 L285 225 L310 220Z"/>
+          </g>
+
+          <!-- Decorative corner marks (etched detail) -->
+          <g stroke="#4A4F4E" stroke-width="1" fill="none">
+            <!-- Top-left corner -->
+            <line x1="40" y1="40" x2="40" y2="80"/>
+            <line x1="40" y1="40" x2="80" y2="40"/>
+            <!-- Top-right corner -->
+            <line x1="460" y1="40" x2="460" y2="80"/>
+            <line x1="460" y1="40" x2="420" y2="40"/>
+            <!-- Bottom-left corner -->
+            <line x1="40" y1="460" x2="40" y2="420"/>
+            <line x1="40" y1="460" x2="80" y2="460"/>
+            <!-- Bottom-right corner -->
+            <line x1="460" y1="460" x2="460" y2="420"/>
+            <line x1="460" y1="460" x2="420" y2="460"/>
+          </g>
+
+          <!-- Inner sigil runes / etched decorations -->
+          <g stroke="#2C6E52" stroke-width="0.7" fill="none" opacity="0.5">
+            <path d="M130 250 L100 250"/>
+            <path d="M370 250 L400 250"/>
+            <path d="M250 70 L250 50"/>
+            <path d="M250 430 L250 450"/>
+            <!-- Diagonal tick marks -->
+            <path d="M120 130 L105 115"/>
+            <path d="M380 130 L395 115"/>
+            <path d="M120 370 L105 385"/>
+            <path d="M380 370 L395 385"/>
+          </g>
+
+          <!-- Outer text arc (subtle "PROTOCOL : DOOM" text around ring) -->
+          <defs>
+            <path id="textArcTop" d="M80,250 a170,170 0 0,1 340,0" fill="none"/>
+            <path id="textArcBottom" d="M420,250 a170,170 0 0,1 -340,0" fill="none"/>
+          </defs>
+          <text font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A4F4E" letter-spacing="6">
+            <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">PROTOCOL : DOOM</textPath>
+          </text>
+          <text font-family="'JetBrains Mono', monospace" font-size="8" fill="#4A4F4E" letter-spacing="4">
+            <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">EDITION I · BENNETT UNIVERSITY</textPath>
+          </text>
+        </svg>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================================
+       EVENT INFO SECTION — "Doom's Decree"
+       ==================================================================== -->
+  <section class="decree" id="decree" aria-labelledby="decree-title">
+    <div class="decree__container">
+
+      <!-- Left Column: Embossed Sigil & Section Title -->
+      <div class="decree__header">
+        <div class="decree__sigil" aria-hidden="true">
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="135" fill="none" stroke="#4A4F4E" stroke-width="1.2"/>
+            <circle cx="150" cy="150" r="120" fill="none" stroke="#2C6E52" stroke-width="0.8" stroke-dasharray="3 6"/>
+            <g fill="none" stroke="#EDE6DA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8">
+              <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+              <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+              <path d="M111 119 L150 107 L189 119"/>
+              <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+              <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
+              <line x1="138" y1="197" x2="138" y2="224" stroke-width="0.8"/>
+              <line x1="147" y1="196" x2="147" y2="227" stroke-width="0.8"/>
+              <line x1="153" y1="196" x2="153" y2="227" stroke-width="0.8"/>
+              <line x1="162" y1="197" x2="162" y2="224" stroke-width="0.8"/>
+              <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+            </g>
+          </svg>
+        </div>
+        <span class="decree__subtitle label-mono">Protocol Specs</span>
+        <h2 class="decree__title" id="decree-title">Doom’s Decree</h2>
+      </div>
+
+      <!-- Right Column: Decree Line-Items -->
+      <div class="decree__list" id="decree-list">
+        <div class="decree__row" style="--row-index: 0;" tabindex="0">
+          <span class="decree__label label-mono">DATE OF SUMMONS</span>
+          <span class="decree__value">October 24–25, 2026</span>
+        </div>
+        <div class="decree__row" style="--row-index: 1;" tabindex="0">
+          <span class="decree__label label-mono">BATTLEGROUND</span>
+          <span class="decree__value">The battlefield will be revealed soon</span>
+        </div>
+        <div class="decree__row" style="--row-index: 2;" tabindex="0">
+          <span class="decree__label label-mono">DURATION</span>
+          <span class="decree__value">24 hours, non-stop</span>
+        </div>
+        <div class="decree__row" style="--row-index: 3;" tabindex="0">
+          <span class="decree__label label-mono">ASSEMBLY SIZE</span>
+          <span class="decree__value">2–4 per team</span>
+        </div>
+        <div class="decree__row" style="--row-index: 4;" tabindex="0">
+          <span class="decree__label label-mono">TRIBUTE REQUIRED</span>
+          <span class="decree__value">None — free entry</span>
+        </div>
+        <div class="decree__row" style="--row-index: 5;" tabindex="0">
+          <span class="decree__label label-mono">DEADLINE OF ENTRY</span>
+          <span class="decree__value">October 14, 2026</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       TRIALS SECTION — "The Trials of Doom"
+       ==================================================================== -->
+  <section class="trials" id="trials" aria-labelledby="trials-title">
+    <div class="trials__container">
+
+      <div class="trials__header">
+        <span class="trials__subtitle label-mono">Trials of Doom</span>
+        <h2 class="trials__title" id="trials-title">The Four Trials</h2>
+        <p class="trials__intro">Four arenas of technical mastery. Choose your proving ground under the Protocol.</p>
+      </div>
+
+      <div class="trials__accordion" id="trials-accordion" role="tablist" aria-label="Trials of Doom Tracks">
+
+        <!-- Trial 1: The Sentience Trial (Expanded by default) -->
+        <article class="trial-panel is-expanded" id="trial-sentience" data-trial="sentience" role="tab" tabindex="0" aria-selected="true" aria-expanded="true">
+          <!-- Collapsed State (Desktop/Tablet: rotated strip; Mobile: collapsed bar) -->
+          <div class="trial-panel__collapsed" aria-hidden="true">
+            <div class="trial-panel__collapsed-sigil">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                  <path d="M111 119 L150 107 L189 119"/>
+                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
+                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+                </g>
+              </svg>
+            </div>
+            <span class="trial-panel__collapsed-label label-mono">TRIAL 01</span>
+            <span class="trial-panel__collapsed-title">The Sentience Trial</span>
+          </div>
+
+          <!-- Expanded Content -->
+          <div class="trial-panel__expanded">
+            <div class="trial-panel__meta">
+              <div class="trial-panel__sigil-badge">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                    <path d="M111 119 L150 107 L189 119"/>
+                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="trial-panel__domain label-mono">AI / MACHINE LEARNING</span>
+            </div>
+
+            <h3 class="trial-panel__title">The Sentience Trial</h3>
+
+            <p class="trial-panel__desc">
+              Develop intelligent systems, autonomous agents, and predictive models that tackle complex real-world challenges using generative AI and machine learning.
+            </p>
+
+            <div class="trial-panel__divider"></div>
+
+            <div class="trial-panel__action">
+              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Trial 2: The Construct Trial -->
+        <article class="trial-panel" id="trial-construct" data-trial="construct" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
+          <div class="trial-panel__collapsed" aria-hidden="true">
+            <div class="trial-panel__collapsed-sigil">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                  <path d="M111 119 L150 107 L189 119"/>
+                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
+                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+                </g>
+              </svg>
+            </div>
+            <span class="trial-panel__collapsed-label label-mono">TRIAL 02</span>
+            <span class="trial-panel__collapsed-title">The Construct Trial</span>
+          </div>
+
+          <div class="trial-panel__expanded">
+            <div class="trial-panel__meta">
+              <div class="trial-panel__sigil-badge">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                    <path d="M111 119 L150 107 L189 119"/>
+                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="trial-panel__domain label-mono">WEB / APP DEVELOPMENT</span>
+            </div>
+
+            <h3 class="trial-panel__title">The Construct Trial</h3>
+
+            <p class="trial-panel__desc">
+              Architect high-performance web applications, mobile platforms, and scalable services with modern architectures and refined user experiences.
+            </p>
+
+            <div class="trial-panel__divider"></div>
+
+            <div class="trial-panel__action">
+              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Trial 3: The Fortress Trial -->
+        <article class="trial-panel" id="trial-fortress" data-trial="fortress" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
+          <div class="trial-panel__collapsed" aria-hidden="true">
+            <div class="trial-panel__collapsed-sigil">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                  <path d="M111 119 L150 107 L189 119"/>
+                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
+                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+                </g>
+              </svg>
+            </div>
+            <span class="trial-panel__collapsed-label label-mono">TRIAL 03</span>
+            <span class="trial-panel__collapsed-title">The Fortress Trial</span>
+          </div>
+
+          <div class="trial-panel__expanded">
+            <div class="trial-panel__meta">
+              <div class="trial-panel__sigil-badge">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                    <path d="M111 119 L150 107 L189 119"/>
+                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="trial-panel__domain label-mono">CYBERSECURITY & BLOCKCHAIN</span>
+            </div>
+
+            <h3 class="trial-panel__title">The Fortress Trial</h3>
+
+            <p class="trial-panel__desc">
+              Engineer resilient security tools, zero-trust protocols, smart contract audits, and decentralized solutions to safeguard data and networks.
+            </p>
+
+            <div class="trial-panel__divider"></div>
+
+            <div class="trial-panel__action">
+              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Trial 4: The Wildcard Trial -->
+        <article class="trial-panel" id="trial-wildcard" data-trial="wildcard" role="tab" tabindex="0" aria-selected="false" aria-expanded="false">
+          <div class="trial-panel__collapsed" aria-hidden="true">
+            <div class="trial-panel__collapsed-sigil">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                  <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                  <path d="M111 119 L150 107 L189 119"/>
+                  <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  <line x1="129" y1="200" x2="129" y2="221" stroke-width="0.8"/>
+                  <line x1="171" y1="200" x2="171" y2="221" stroke-width="0.8"/>
+                </g>
+              </svg>
+            </div>
+            <span class="trial-panel__collapsed-label label-mono">TRIAL 04</span>
+            <span class="trial-panel__collapsed-title">The Wildcard Trial</span>
+          </div>
+
+          <div class="trial-panel__expanded">
+            <div class="trial-panel__meta">
+              <div class="trial-panel__sigil-badge">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="150" cy="150" r="135" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="150" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 6"/>
+                  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+                    <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+                    <path d="M111 119 L150 107 L189 119"/>
+                    <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="trial-panel__domain label-mono">OPEN INNOVATION</span>
+            </div>
+
+            <h3 class="trial-panel__title">The Wildcard Trial</h3>
+
+            <p class="trial-panel__desc">
+              Break beyond conventional categories to pioneer cross-disciplinary solutions, IoT systems, developer tooling, or novel hardware integrations.
+            </p>
+
+            <div class="trial-panel__divider"></div>
+
+            <div class="trial-panel__action">
+              <span class="trial-panel__enter label-mono">ENTER THIS TRIAL</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       PRIZES SECTION — "The Spoils of Doom"
+       ==================================================================== -->
+  <section class="prizes" id="prizes" aria-labelledby="prizes-title">
+    <div class="prizes__container">
+
+      <div class="prizes__header">
+        <span class="prizes__subtitle label-mono">Bounty of the Protocol</span>
+        <h2 class="prizes__title" id="prizes-title">The Spoils of Doom</h2>
+        <p class="prizes__intro">Tribute reserved for the victors. Rank is distinguished by the breadth of the decree.</p>
+      </div>
+
+      <!-- Top Three Prizes (Rank signaled by unequal panel widths) -->
+      <div class="prizes__top-row" id="prizes-top-row">
+
+        <!-- 1st Place: The Doom Protocol (Widest) -->
+        <article class="prize-card prize-card--first" tabindex="0">
+          <svg class="prize-card__border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="99" height="99" fill="none" pathLength="100" />
+          </svg>
+          <div class="prize-card__content">
+            <div class="prize-card__badge-row">
+              <span class="prize-card__rank label-mono">1ST RANK</span>
+              <span class="prize-card__seal label-mono">THE DOOM PROTOCOL</span>
+            </div>
+            <h3 class="prize-card__name">The Doom Protocol</h3>
+            <div class="prize-card__amount">₹8,000</div>
+            <p class="prize-card__rewards label-mono">
+              + GFG hoodie + goodie hamper + featured on GFG chapter socials
+            </p>
+          </div>
+        </article>
+
+        <!-- 2nd Place: The Latverian Grant (Medium Width) -->
+        <article class="prize-card prize-card--second" tabindex="0">
+          <svg class="prize-card__border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="99" height="99" fill="none" pathLength="100" />
+          </svg>
+          <div class="prize-card__content">
+            <div class="prize-card__badge-row">
+              <span class="prize-card__rank label-mono">2ND RANK</span>
+              <span class="prize-card__seal label-mono">THE LATVERIAN GRANT</span>
+            </div>
+            <h3 class="prize-card__name">The Latverian Grant</h3>
+            <div class="prize-card__amount">₹5,000</div>
+            <p class="prize-card__rewards label-mono">
+              + GFG hoodie + goodies
+            </p>
+          </div>
+        </article>
+
+        <!-- 3rd Place: The Iron Legacy (Narrowest) -->
+        <article class="prize-card prize-card--third" tabindex="0">
+          <svg class="prize-card__border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="99" height="99" fill="none" pathLength="100" />
+          </svg>
+          <div class="prize-card__content">
+            <div class="prize-card__badge-row">
+              <span class="prize-card__rank label-mono">3RD RANK</span>
+              <span class="prize-card__seal label-mono">THE IRON LEGACY</span>
+            </div>
+            <h3 class="prize-card__name">The Iron Legacy</h3>
+            <div class="prize-card__amount">₹3,000</div>
+            <p class="prize-card__rewards label-mono">
+              + GFG T-shirt + goodies
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Secondary Row: Uniform Flat Tags / Pills -->
+      <div class="prizes__secondary-row" id="prizes-secondary-row">
+
+        <div class="prize-tag">
+          <span class="prize-tag__marker" aria-hidden="true">❖</span>
+          <span class="prize-tag__title label-mono">Trial Master ×4 (per track)</span>
+          <span class="prize-tag__divider">—</span>
+          <span class="prize-tag__reward">GFG merch kit + certificate</span>
+        </div>
+
+        <div class="prize-tag">
+          <span class="prize-tag__marker" aria-hidden="true">❖</span>
+          <span class="prize-tag__title label-mono">The Herald's Choice (Best UI/Design)</span>
+          <span class="prize-tag__divider">—</span>
+          <span class="prize-tag__reward">GFG merch</span>
+        </div>
+
+        <div class="prize-tag">
+          <span class="prize-tag__marker" aria-hidden="true">❖</span>
+          <span class="prize-tag__title label-mono">First Summons (Best Freshman Team)</span>
+          <span class="prize-tag__divider">—</span>
+          <span class="prize-tag__reward">GFG merch</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       REGISTRATION / CTA SECTION — "Sign the Pact"
+       ==================================================================== -->
+  <section class="cta" id="cta" aria-labelledby="cta-title">
+    <div class="cta__container">
+
+      <div class="cta__panel" id="cta-panel">
+        <span class="cta__subtitle label-mono">Final Summons</span>
+
+        <h2 class="cta__title" id="cta-title">The Trial Awaits. Will You Answer?</h2>
+
+        <p class="cta__recap label-mono">
+          <span>EVENT DATES: OCTOBER 24–25, 2026</span>
+          <span class="cta__recap-sep">•</span>
+          <span>ENTRY DEADLINE: OCTOBER 14, 2026</span>
+        </p>
+
+        <!-- Circular Brass Seal Button -->
+        <button class="seal-button" id="seal-button" aria-haspopup="dialog" aria-controls="pact-modal" aria-label="Sign the Pact - Open Registration Info">
+          <svg class="seal-button__svg" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Circular path for inner text arc -->
+              <path id="sealTextPath" d="M120,34 A86,86 0 1,1 119.9,34" fill="none"/>
+              <!-- Raised radial gradient for embossed brass seal -->
+              <radialGradient id="brassSealGrad" cx="35%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#d6ab6b" />
+                <stop offset="45%" stop-color="#b08d57" />
+                <stop offset="85%" stop-color="#6e532b" />
+                <stop offset="100%" stop-color="#423118" />
+              </radialGradient>
+            </defs>
+
+            <!-- Outer Jagged Light Cracks emanating from seal rim (Visible on hover/focus/active) -->
+            <g class="seal-cracks" fill="none" stroke="#ffe5a3" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Top-right crack -->
+              <path d="M185 55 L198 42 L206 45 L218 30" />
+              <path d="M198 42 L208 36" />
+              <!-- Right crack -->
+              <path d="M210 120 L226 122 L232 115 L240 118" />
+              <!-- Bottom-right crack -->
+              <path d="M185 185 L200 198 L196 208 L212 222" />
+              <!-- Bottom-left crack -->
+              <path d="M55 185 L42 198 L46 208 L30 220" />
+              <!-- Left crack -->
+              <path d="M30 120 L14 118 L8 126 L0 122" />
+              <!-- Top-left crack -->
+              <path d="M55 55 L40 40 L44 30 L28 20" />
+            </g>
+
+            <!-- Outer Brass Rim & Bevel Rings -->
+            <circle cx="120" cy="120" r="105" fill="none" stroke="#B08D57" stroke-width="2"/>
+            <circle cx="120" cy="120" r="100" fill="url(#brassSealGrad)" stroke="#4A4F4E" stroke-width="1.5"/>
+            <circle cx="120" cy="120" r="88" fill="none" stroke="#423118" stroke-width="1"/>
+            <circle cx="120" cy="120" r="70" fill="#122019" stroke="#B08D57" stroke-width="1"/>
+
+            <!-- Curved Label along inner edge -->
+            <text font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" fill="#EDE6DA" letter-spacing="4">
+              <textPath href="#sealTextPath" startOffset="0%">SIGN THE PACT • SIGN THE PACT • </textPath>
+            </text>
+
+            <!-- Inner Embossed Doom Sigil Mark -->
+            <g fill="none" stroke="#B08D57" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(45, 45) scale(0.6)">
+              <circle cx="120" cy="120" r="100" fill="none" stroke="#4A4F4E" stroke-width="1"/>
+              <path d="M120 50 C95 50, 68 70, 63 98 L60 136 C58 155, 63 175, 73 185 L78 190 C83 194, 90 201, 95 206 L102 210 C109 213, 116 214, 120 214 C124 214, 131 213, 138 210 L145 206 C150 201, 157 194, 162 190 L167 185 C177 175, 182 155, 180 136 L177 98 C172 70, 145 50, 120 50Z"/>
+              <path d="M120 75 C103 75, 84 87, 81 108 L79 141 C77 155, 84 171, 94 181 L103 190 C110 193, 117 194, 120 194 C123 194, 130 193, 137 190 L146 181 C156 171, 163 155, 161 141 L159 108 C156 87, 137 75, 120 75Z"/>
+              <path d="M89 105 L120 95 L151 105"/>
+              <path d="M120 105 L118 145 L120 160 L122 145 L120 105"/>
+            </g>
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       "COMING SOON" MODAL
+       ==================================================================== -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal-panel" id="pact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+      <!-- Modal Close Button -->
+      <button class="modal-close" id="modal-close" aria-label="Close modal">×</button>
+
+      <div class="modal-content">
+
+        <!-- Small brass-gold sigil -->
+        <div class="modal-sigil" aria-hidden="true">
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="135" fill="none" stroke="#B08D57" stroke-width="1.5"/>
+            <circle cx="150" cy="150" r="120" fill="none" stroke="#2C6E52" stroke-width="1" stroke-dasharray="3 6"/>
+            <g fill="none" stroke="#B08D57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M150 50 C120 50, 84 74, 78 110 L75 158 C72 182, 78 206, 90 218 L96 225 C102 230, 111 239, 117 245 L126 251 C135 254, 144 255, 150 255 C156 255, 165 254, 174 251 L183 245 C189 239, 198 230, 204 225 L210 218 C222 206, 228 182, 225 158 L222 110 C216 74, 180 50, 150 50Z"/>
+              <path d="M150 80 C129 80, 105 95, 101 122 L99 164 C97 182, 105 203, 117 215 L129 227 C138 230, 147 231, 150 231 C153 231, 162 230, 171 227 L183 215 C195 203, 203 182, 201 164 L199 122 C195 95, 171 80, 150 80Z"/>
+              <path d="M111 119 L150 107 L189 119"/>
+              <path d="M150 119 L147 170 L150 188 L153 170 L150 119"/>
+            </g>
+          </svg>
+        </div>
+
+        <span class="modal-subtitle label-mono">Protocol Summons</span>
+        <h3 class="modal-title" id="modal-title">The Pact Is Not Yet Open</h3>
+
+        <p class="modal-body">
+          Registrations open closer to the event. Follow <a href="https://instagram.com/geeksforgeeks_bu" target="_blank" rel="noopener noreferrer" class="modal-link">@geeksforgeeks_bu</a> for the summons.
+        </p>
+
+        <button class="modal-btn label-mono" id="modal-ack-btn">ACKNOWLEDGE</button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       FOOTER SECTION
+       ==================================================================== -->
+  <footer class="footer" id="footer">
+    <div class="footer__container">
+
+      <!-- Left Column: Org Block -->
+      <div class="footer__col footer__col--org">
+        <p class="footer__org-name">GeeksforGeeks Student Chapter</p>
+        <p class="footer__org-sub label-mono">BENNETT UNIVERSITY</p>
+        <p class="footer__edition label-mono">PROTOCOL: DOOM — EDITION I</p>
+      </div>
+
+      <!-- Middle Column: Social Links -->
+      <div class="footer__col footer__col--social">
+        <span class="footer__social-label label-mono">CONNECT</span>
+        <div class="footer__social-links">
+          <a href="https://instagram.com/geeksforgeeks_bu" target="_blank" rel="noopener noreferrer" class="footer__link label-mono">INSTAGRAM</a>
+          <span class="footer__link-sep label-mono">•</span>
+          <a href="mailto:geeksforgeeks.bu@bennett.edu.in" class="footer__link label-mono">EMAIL</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Flavor Line & Copyright -->
+      <div class="footer__col footer__col--meta">
+        <p class="footer__flavor">Doom is watching.</p>
+        <p class="footer__copyright label-mono">© 2026 GFG Student Chapter, Bennett University</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
