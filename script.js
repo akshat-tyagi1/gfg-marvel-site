@@ -107,6 +107,26 @@
   }
 
 
+  // --- Fixed Navbar Scroll Controller ---
+  const siteNav = document.getElementById('site-nav');
+  const heroSection = document.getElementById('hero');
+
+  if (siteNav && heroSection) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // When hero is NOT intersecting (scrolled past hero), condense the navbar
+        if (!entry.isIntersecting) {
+          siteNav.classList.add('is-scrolled');
+        } else {
+          siteNav.classList.remove('is-scrolled');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    navObserver.observe(heroSection);
+  }
+
+
   // --- IntersectionObserver for Section Reveals (Decree, Trials, Prizes, CTA) ---
   const revealSections = document.querySelectorAll('#decree, #trials, #prizes, #cta');
   if (revealSections.length > 0) {
@@ -126,12 +146,17 @@
   // --- Trials of Doom Accordion Interaction ---
   const trialPanels = document.querySelectorAll('.trial-panel');
   if (trialPanels.length > 0) {
-    function expandTrial(targetPanel) {
-      if (!targetPanel || targetPanel.classList.contains('is-expanded')) return;
+    function expandTrial(target) {
+      const targetPanel = target ? target.closest('.trial-panel') : null;
+      if (!targetPanel) return;
 
       trialPanels.forEach(panel => {
-        const isTarget = panel === targetPanel;
-        panel.classList.toggle('is-expanded', isTarget);
+        const isTarget = (panel === targetPanel);
+        if (isTarget) {
+          panel.classList.add('is-expanded');
+        } else {
+          panel.classList.remove('is-expanded');
+        }
         const headerBtn = panel.querySelector('.trial-panel__collapsed');
         if (headerBtn) {
           headerBtn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
@@ -140,14 +165,15 @@
     }
 
     trialPanels.forEach(panel => {
-      panel.addEventListener('click', () => {
-        expandTrial(panel);
+      panel.addEventListener('click', (e) => {
+        expandTrial(e.target);
       });
 
       panel.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
+          if (e.target.tagName === 'A') return;
           e.preventDefault();
-          expandTrial(panel);
+          expandTrial(e.target);
         }
       });
     });
@@ -191,6 +217,19 @@
   }
 
   if (sealButton) {
+    const preDim = document.getElementById('seal-pre-dim');
+
+    /** Helper: remove .is-cracking and .is-glowing, reset crack paths to hidden */
+    function cleanSealState() {
+      sealButton.classList.remove('is-pressed', 'is-flashing', 'is-cracking', 'is-glowing');
+    }
+
+    /** Fade out and hide the pre-dim overlay */
+    function hideDim() {
+      if (!preDim) return;
+      preDim.classList.remove('is-active');
+    }
+
     sealButton.addEventListener('click', () => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -199,20 +238,46 @@
         return;
       }
 
-      // Step 1: Press down (scale 0.92, ~150ms)
+      // Guard against double-clicks mid-sequence
+      sealButton.style.pointerEvents = 'none';
+
+      // --- STEP 1: Press down (scale 0.92, 150ms) ---
+      cleanSealState();
       sealButton.classList.add('is-pressed');
 
       setTimeout(() => {
-        // Step 2: Snap back to full scale with bright flash (~300ms)
+        // --- STEP 2: Snap back + brightness flash + screen dim ---
         sealButton.classList.remove('is-pressed');
         sealButton.classList.add('is-flashing');
 
+        // Pre-modal dim fades in fast (180ms transition per CSS)
+        if (preDim) preDim.classList.add('is-active');
+
         setTimeout(() => {
-          // Step 3: Remove flash and open modal
+          // Remove flash class after it completes
           sealButton.classList.remove('is-flashing');
-          openModal();
-        }, 280);
-      }, 150);
+
+          // --- STEP 3: Crack draw animation (~160ms + 90ms stagger = ~250ms total) ---
+          sealButton.classList.add('is-cracking');
+
+          setTimeout(() => {
+            // --- STEP 4: Brass glow burst spreads outward (~380ms) ---
+            sealButton.classList.remove('is-cracking');
+            sealButton.classList.add('is-glowing');
+
+            setTimeout(() => {
+              // --- STEP 5: Glow fades, modal opens ---
+              sealButton.classList.remove('is-glowing');
+              hideDim();
+              sealButton.style.pointerEvents = '';
+              openModal();
+            }, 300); // wait for glow to peak and begin fading before modal opens
+
+          }, 260); // crack animation duration (160ms draw + 90ms last stagger + ~10ms buffer)
+
+        }, 280); // existing flash duration, unchanged
+
+      }, 150); // existing press duration, unchanged
     });
   }
 

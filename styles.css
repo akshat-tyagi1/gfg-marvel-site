@@ -87,6 +87,172 @@ a {
 }
 
 /* ==========================================================================
+   FIXED NAVIGATION BAR
+   ========================================================================== */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  background: rgba(10, 16, 13, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(74, 79, 78, 0.25);
+  transition: padding 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 350ms ease,
+              border-color 350ms ease,
+              box-shadow 350ms ease;
+}
+
+.site-nav.is-scrolled {
+  padding: 10px 0;
+  background: rgba(10, 16, 13, 0.92);
+  border-bottom-color: rgba(176, 141, 87, 0.35);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.site-nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+}
+
+.site-nav__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-nav__logo-full {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.site-nav__logo-short {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-brass);
+  display: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.site-nav.is-scrolled .site-nav__logo-full {
+  display: none;
+  opacity: 0;
+}
+
+.site-nav.is-scrolled .site-nav__logo-short {
+  display: inline;
+  opacity: 1;
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-nav__link {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 250ms ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  color: var(--accent-brass);
+}
+
+.site-nav__btn {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-brass);
+  border: 1px solid var(--accent-brass);
+  padding: 7px 16px;
+  background: transparent;
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-nav__btn:hover,
+.site-nav__btn:focus-visible {
+  background: rgba(176, 141, 87, 0.14);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 12px rgba(176, 141, 87, 0.3);
+}
+
+.site-nav__btn-short {
+  display: none;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav,
+  .site-nav__logo-full,
+  .site-nav__logo-short,
+  .site-nav__link,
+  .site-nav__btn {
+    transition: none !important;
+  }
+}
+
+/* Mobile Responsive Adaptations (< 640px) */
+@media (max-width: 639px) {
+  .site-nav {
+    padding: 12px 0;
+  }
+
+  .site-nav.is-scrolled {
+    padding: 8px 0;
+  }
+
+  .site-nav__link {
+    display: none; /* Simplify mobile bar: hide text links, keep logo + condensed CTA */
+  }
+
+  .site-nav__btn-full {
+    display: none;
+  }
+
+  .site-nav__btn-short {
+    display: inline;
+  }
+
+  .site-nav__btn {
+    padding: 5px 12px;
+    font-size: 0.65rem;
+  }
+
+  .site-nav__logo-full {
+    font-size: 0.85rem;
+  }
+
+  .site-nav__logo-short {
+    font-size: 0.8rem;
+  }
+}
+
+/* ==========================================================================
    HERO SECTION
    ========================================================================== */
 
@@ -96,7 +262,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  padding: var(--section-pad-y) var(--section-pad-x);
+  padding: calc(var(--section-pad-y) + 24px) var(--section-pad-x) var(--section-pad-y);
   overflow: hidden;
 }
 
@@ -646,6 +812,8 @@ a {
 
 /* --- Collapsed View State --- */
 .trial-panel__collapsed {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -655,7 +823,9 @@ a {
   height: 100%;
   width: 100%;
   opacity: 1;
-  transition: opacity 250ms ease;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 200ms ease-in 150ms, visibility 200ms ease-in 150ms;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -665,8 +835,11 @@ a {
 }
 
 .trial-panel.is-expanded .trial-panel__collapsed {
-  display: none;
+  display: flex;
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease-out 0ms, visibility 150ms ease-out 0ms;
 }
 
 .trial-panel__collapsed-sigil {
@@ -711,17 +884,26 @@ a {
 
 /* --- Expanded View State --- */
 .trial-panel__expanded {
-  display: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
   flex-direction: column;
   padding: clamp(32px, 4vw, 48px);
   height: 100%;
+  width: 100%;
   justify-content: space-between;
   opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease-out 0ms, visibility 150ms ease-out 0ms;
 }
 
 .trial-panel.is-expanded .trial-panel__expanded {
   display: flex;
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 250ms ease-in 100ms, visibility 250ms ease-in 100ms;
 }
 
 /* Staggered reveals after width settles (~100ms delay) */
@@ -875,12 +1057,16 @@ a {
 
   /* Collapsed Header Bar on Mobile */
   .trial-panel__collapsed {
+    position: relative;
+    inset: auto;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     padding: 16px 20px;
     height: auto;
     gap: 16px;
+    opacity: 1;
+    visibility: visible;
   }
 
   .trial-panel.is-expanded .trial-panel__collapsed {
@@ -907,9 +1093,15 @@ a {
 
   /* Expanded Panel on Mobile */
   .trial-panel__expanded {
+    position: relative;
+    inset: auto;
     padding: 24px 20px;
     gap: 16px;
     height: auto;
+  }
+
+  .trial-panel:not(.is-expanded) .trial-panel__expanded {
+    display: none;
   }
 
   .trial-panel.is-expanded .trial-panel__title {
@@ -1442,6 +1634,84 @@ a {
   }
 }
 
+/* --- Pre-modal screen dim overlay --- */
+#seal-pre-dim {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 6, 0.72);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease-out;
+}
+
+#seal-pre-dim.is-active {
+  opacity: 1;
+  pointer-events: none; /* never intercept clicks — purely visual */
+}
+
+/* --- Crack-draw animation (stroke-dashoffset reveal) --- */
+/* Give each crack path a known dash length — 200 covers the longest path */
+.seal-cracks path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+
+/* Default (hover/focus): cracks visible as solid, static lines */
+.seal-button:hover .seal-cracks path,
+.seal-button:focus-visible .seal-cracks path,
+.seal-button:active .seal-cracks path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0ms; /* instant on hover — static */
+}
+
+/* is-cracking state: animate the draw-on from offset 200 → 0 */
+.seal-button.is-cracking .seal-cracks {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(255, 217, 138, 0.95)) drop-shadow(0 0 16px rgba(176, 141, 87, 0.75));
+}
+
+.seal-button.is-cracking .seal-cracks path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger each path slightly so cracks appear to spread sequentially */
+.seal-button.is-cracking .seal-cracks path:nth-child(1) { transition-delay:  0ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(2) { transition-delay: 15ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(3) { transition-delay: 30ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(4) { transition-delay: 45ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(5) { transition-delay: 60ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(6) { transition-delay: 75ms; }
+.seal-button.is-cracking .seal-cracks path:nth-child(7) { transition-delay: 90ms; }
+
+/* --- Brass glow burst emanating outward from the seal --- */
+.seal-button.is-glowing {
+  animation: seal-glow-burst 380ms cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+}
+
+@keyframes seal-glow-burst {
+  0% {
+    box-shadow: none;
+    filter: drop-shadow(0 0 0px rgba(255, 224, 153, 0));
+  }
+  25% {
+    box-shadow:
+      0 0 40px 16px rgba(255, 215, 120, 0.55),
+      0 0 80px 32px rgba(176, 141, 87, 0.35),
+      0 0 140px 56px rgba(44, 110, 82, 0.18);
+    filter: drop-shadow(0 0 20px rgba(255, 224, 153, 0.9));
+  }
+  100% {
+    box-shadow:
+      0 0 80px 48px rgba(255, 215, 120, 0),
+      0 0 160px 80px rgba(176, 141, 87, 0),
+      0 0 240px 100px rgba(44, 110, 82, 0);
+    filter: drop-shadow(0 0 0px rgba(255, 224, 153, 0));
+  }
+}
+
+
 /* ==========================================================================
    "COMING SOON" MODAL
    ========================================================================== */
@@ -1770,7 +2040,25 @@ a {
   .seal-button.is-flashing .seal-button__svg {
     animation: none;
   }
+
+  /* New cinematic sequence: suppress all new states under reduced-motion */
+  #seal-pre-dim {
+    transition: none;
+  }
+
+  #seal-pre-dim.is-active {
+    opacity: 0; /* never dim under reduced-motion — JS skips these steps anyway */
+  }
+
+  .seal-button.is-cracking .seal-cracks path {
+    transition: none;
+  }
+
+  .seal-button.is-glowing {
+    animation: none;
+  }
 }
+
 
 
 

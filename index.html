@@ -16,6 +16,27 @@
 <body>
 
   <!-- ====================================================================
+       FIXED NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-nav" id="site-nav">
+    <div class="site-nav__container">
+      <a href="#hero" class="site-nav__logo" aria-label="Protocol: Doom Home">
+        <span class="site-nav__logo-full">PROTOCOL: DOOM</span>
+        <span class="site-nav__logo-short">DOOM // EDITION I</span>
+      </a>
+
+      <nav class="site-nav__links" aria-label="Main Navigation">
+        <a href="#trials" class="site-nav__link label-mono">TRIALS</a>
+        <a href="#prizes" class="site-nav__link label-mono">PRIZES</a>
+        <a href="#cta" class="site-nav__btn label-mono">
+          <span class="site-nav__btn-full">ANSWER THE SUMMONS</span>
+          <span class="site-nav__btn-short">SUMMONS</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====================================================================
        HERO SECTION
        ==================================================================== -->
   <section class="hero" id="hero">
@@ -688,6 +709,9 @@
 
     </div>
   </section>
+
+  <!-- Pre-modal screen dim overlay (cinematic beat before modal opens) -->
+  <div id="seal-pre-dim" aria-hidden="true"></div>
 
   <!-- ====================================================================
        "COMING SOON" MODAL
